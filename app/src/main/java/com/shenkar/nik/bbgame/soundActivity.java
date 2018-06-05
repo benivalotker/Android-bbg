@@ -20,6 +20,7 @@ public class soundActivity extends AppCompatActivity {
     TextView textview;
     ImageView imageView;
     ImageView imageView2;
+    int length;
 
 
     @Override
@@ -87,9 +88,22 @@ public class soundActivity extends AppCompatActivity {
         mMediaPlayer.start();
 
     }
+
+    @Override
     protected void onDestroy() {
         //other codes
         super.onDestroy();
         mMediaPlayer.stop();
+    }
+    protected void onResume() {
+        super.onResume();
+        mMediaPlayer.seekTo(length);
+        mMediaPlayer.start();
+
+    }
+    protected void onPause() {
+        super.onPause();
+        mMediaPlayer.pause();
+        length = mMediaPlayer.getCurrentPosition();
     }
 }

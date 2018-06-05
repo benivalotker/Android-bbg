@@ -5,7 +5,7 @@ import android.view.SurfaceView;
 
 public class BreakoutEngine extends SurfaceView {
 
-    public BreakoutEngine(Context context) {
+    public BreakoutEngine(Context context,int x,int y) {
         super(context);
     }
 
