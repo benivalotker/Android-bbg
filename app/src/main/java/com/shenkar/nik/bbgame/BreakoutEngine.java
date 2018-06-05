@@ -1,9 +1,12 @@
 package com.shenkar.nik.bbgame;
 
 import android.content.Context;
+import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 public class BreakoutEngine extends SurfaceView {
+
+
 
     public BreakoutEngine(Context context,int x,int y) {
         super(context);
