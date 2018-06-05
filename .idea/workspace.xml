@@ -7,21 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a91f92f-8416-4b4d-8947-25e8882ff8d2" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/classAnalysis.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/javaCompile.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/javaCompile/taskHistory.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/shenkar/nik/bbgame/BreakoutEngine.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/shenkar/nik/bbgame/BreakoutEngine.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/shenkar/nik/bbgame/bbgActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/shenkar/nik/bbgame/bbgActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/shenkar/nik/bbgame/soundActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/shenkar/nik/bbgame/soundActivity.java" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -2453,7 +2439,14 @@
       <option name="project" value="LOCAL" />
       <updated>1528230817586</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="onStart and onRusume methods in gameActivity and SoundActivity + fixed portrait screen orientaion">
+      <created>1528235328939</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1528235328939</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2527,7 +2520,8 @@
     <MESSAGE value="added mute and unmute sound icons" />
     <MESSAGE value="changed sound icons" />
     <MESSAGE value="added BreakoutEngine to project" />
-    <option name="LAST_COMMIT_MESSAGE" value="added BreakoutEngine to project" />
+    <MESSAGE value="onStart and onRusume methods in gameActivity and SoundActivity + fixed portrait screen orientaion" />
+    <option name="LAST_COMMIT_MESSAGE" value="onStart and onRusume methods in gameActivity and SoundActivity + fixed portrait screen orientaion" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
