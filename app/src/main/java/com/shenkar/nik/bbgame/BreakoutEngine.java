@@ -11,6 +11,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.text.TextPaint;
@@ -180,23 +181,10 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
         for(int i=0; i< numBrick;i++){
             if(RectF.intersects(brick[i].getRect(), ball.getRect())) {
                 if(ourHolder.getSurface().isValid()) {
-                    //rect = brick[i].getRect();
-
-
-
                     if(brick[i].setInvisable() == "red")
-                    {
                         color[i] = Color.RED;
-
-
-                    }
-
-                    
                     else
                         color[i] = Color.GREEN;
-
-                   // paint.setColor(color[i]);
-                   // canvas.drawRect(rect, paint);
 
                     ball.reverseY();
                     score++;
@@ -305,17 +293,14 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
             RectF rect;
 
             for(int i=0; i < numBrick; i++){
-                // if(brick[i].getVisibla()){
                 rect = brick[i].getRect();
-                //rectangle
-               // paint.setColor(color[i]);
-              //  canvas.drawRect(rect, paint);
-                //}
+
                 paint.setColor(Color.GREEN);
                 TextPaint textPaint = new TextPaint();
                 textPaint.setColor(color[i]);
                 textPaint.setTextAlign(Paint.Align.CENTER);
-                textPaint.setTextSize(50);
+                textPaint.setTextSize(60);
+                textPaint.setTypeface(Typeface.create("Arial", Typeface.BOLD));
 
                 float textHeight = textPaint.descent() - textPaint.ascent();
                 float textOffset = (textHeight / 2) - textPaint.descent();
@@ -338,7 +323,6 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
 
             //show all
             ourHolder.unlockCanvasAndPost(canvas);
-
         }
     }
 
