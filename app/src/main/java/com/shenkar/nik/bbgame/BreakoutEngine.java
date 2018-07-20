@@ -13,6 +13,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.media.AudioManager;
 import android.media.SoundPool;
+import android.text.TextPaint;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
@@ -83,6 +84,9 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
     //bitmap
     Bitmap  bitmap;
     Bitmap ScaleBitmap;
+
+    //text array
+    String [] textarray = {"u", "m", "b", "r", "e", "l", "l", "a"};
 
     public BreakoutEngine(Context context, int x, int y){
         super(context);
@@ -176,18 +180,23 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
         for(int i=0; i< numBrick;i++){
             if(RectF.intersects(brick[i].getRect(), ball.getRect())) {
                 if(ourHolder.getSurface().isValid()) {
-                    rect = brick[i].getRect();
+                    //rect = brick[i].getRect();
+
+
 
                     if(brick[i].setInvisable() == "red")
+                    {
                         color[i] = Color.RED;
 
 
+                    }
 
+                    
                     else
                         color[i] = Color.GREEN;
 
-                    paint.setColor(color[i]);
-                    canvas.drawRect(rect, paint);
+                   // paint.setColor(color[i]);
+                   // canvas.drawRect(rect, paint);
 
                     ball.reverseY();
                     score++;
@@ -299,9 +308,20 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
                 // if(brick[i].getVisibla()){
                 rect = brick[i].getRect();
                 //rectangle
-                paint.setColor(color[i]);
-                canvas.drawRect(rect, paint);
+               // paint.setColor(color[i]);
+              //  canvas.drawRect(rect, paint);
                 //}
+                paint.setColor(Color.GREEN);
+                TextPaint textPaint = new TextPaint();
+                textPaint.setColor(color[i]);
+                textPaint.setTextAlign(Paint.Align.CENTER);
+                textPaint.setTextSize(50);
+
+                float textHeight = textPaint.descent() - textPaint.ascent();
+                float textOffset = (textHeight / 2) - textPaint.descent();
+
+                canvas.drawRect(rect, paint);
+                canvas.drawText(textarray[i], rect.centerX(), rect.centerY() + textOffset, textPaint);
             }
 
 
