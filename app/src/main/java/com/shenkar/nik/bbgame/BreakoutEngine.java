@@ -3,30 +3,27 @@ package com.shenkar.nik.bbgame;
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Rect;
+import android.graphics.Point;
 import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.media.SoundPool;
 import android.text.TextPaint;
 import android.util.Log;
+import android.view.Display;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.widget.Button;
-import android.widget.ImageView;
+import android.view.WindowManager;
 
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.concurrent.ArrayBlockingQueue;
 
-import static android.content.ContentValues.TAG;
 
 public class BreakoutEngine extends SurfaceView implements Runnable {
 
@@ -84,7 +81,9 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
 
     //bitmap
     Bitmap  bitmap;
-    Bitmap ScaleBitmap;
+    Bitmap  bitmapBackground;
+    Bitmap  ScaleBitmap;
+    Bitmap  backgroundConfig;
 
     //text array
     String [] textarray = {"u", "m", "b", "r", "e", "l", "l", "a"};
@@ -109,6 +108,17 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
         //create pause button
         bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.puse);
         ScaleBitmap = Bitmap.createScaledBitmap(bitmap, 100, 100, true);
+
+        //background
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = display.getWidth();  // deprecated
+        int height = display.getHeight();
+
+        bitmapBackground = BitmapFactory.decodeResource(getResources(), R.drawable.city);
+        backgroundConfig = Bitmap.createScaledBitmap(bitmapBackground, width, height, true);
 
         //load sound
         soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
@@ -277,6 +287,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
 
             //drew the background color
             canvas.drawColor(Color.argb(255, 26, 128, 182));
+            canvas.drawBitmap(backgroundConfig, 0, 0 , null);
 
 
             //////drew all to screen
