@@ -318,6 +318,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
 
                 canvas.drawRect(rect, paint);
                 canvas.drawText(textarray[i], rect.centerX(), rect.centerY() + textOffset, textPaint);
+
             }
 
 
@@ -351,6 +352,19 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
                 }else {
                     bat.setMovmentState(bat.LEFT);
                 }
+
+
+                if(motionEvent.getX() < 87 && motionEvent.getY() > 953 && motionEvent.getY() < 1030){
+                    if(playing == false){
+                        playing = true;
+                        resume();
+                    }else{
+                        pause();
+                    }
+
+
+                }
+
 
                 break;
 
