@@ -23,6 +23,7 @@ import android.view.WindowManager;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Random;
 
 
 public class BreakoutEngine extends SurfaceView implements Runnable {
@@ -42,6 +43,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
     //cnvas & paint object
     private Canvas canvas;
     private Paint paint;
+    private Paint paint1;
 
     //color dynamic
     private int [] color = new int[8];
@@ -86,7 +88,11 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
     Bitmap  backgroundConfig;
 
     //text array
-    String [] textarray = {"u", "m", "b", "r", "e", "l", "l", "a"};
+    String [] textarray = {"U", "M", "B", "R", "E", "L", "L", "A"};
+
+    //random
+    Random rnd = new Random();
+
 
     public BreakoutEngine(Context context, int x, int y){
         super(context);
@@ -94,6 +100,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
         //initilaize ourHolder and paint object
         ourHolder = getHolder();
         paint = new Paint();
+        paint1= new Paint();
         Arrays.fill(color, Color.GREEN);
 
         screenX = x;
@@ -108,6 +115,11 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
         //create pause button
         bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.puse);
         ScaleBitmap = Bitmap.createScaledBitmap(bitmap, 100, 100, true);
+
+        //paint1
+        paint1.setColor(Color.GREEN);
+        paint1.setTextSize(60);
+        paint1.setTypeface(Typeface.create("Arial",Typeface.BOLD_ITALIC));
 
         //background
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
@@ -184,21 +196,17 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
         ball.update(fps);
 
         //chack for ball toch on brick
-        RectF rect;
-
-
-
         for(int i=0; i< numBrick;i++){
-            if(RectF.intersects(brick[i].getRect(), ball.getRect())) {
-                if(ourHolder.getSurface().isValid()) {
-                    if(brick[i].setInvisable() == "red")
+            if (RectF.intersects(brick[i].getRect(), ball.getRect())) {
+                if (ourHolder.getSurface().isValid()) {
+                    if (brick[i].setInvisable() == "red")
                         color[i] = Color.RED;
                     else
                         color[i] = Color.GREEN;
 
+                    paint1.setColor(Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256)));
                     ball.reverseY();
                     score++;
-                    soundPool.play(deep1ID, 1, 1, 0, 0, 1);
                 }
             }
         }
@@ -293,6 +301,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
             //////drew all to screen
             // ball & bat color
             paint.setColor(Color.argb(255,  133, 255, 144));
+
             //draw bat
             canvas.drawRect(bat.getRect(), paint);
 
@@ -310,8 +319,8 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
                 TextPaint textPaint = new TextPaint();
                 textPaint.setColor(color[i]);
                 textPaint.setTextAlign(Paint.Align.CENTER);
-                textPaint.setTextSize(60);
-                textPaint.setTypeface(Typeface.create("Arial", Typeface.BOLD));
+                textPaint.setTextSize(80);
+                textPaint.setTypeface(Typeface.create(  "dancing_script", Typeface.BOLD));
 
                 float textHeight = textPaint.descent() - textPaint.ascent();
                 float textOffset = (textHeight / 2) - textPaint.descent();
@@ -321,13 +330,12 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
 
             }
 
-
-            //draw the HUB
-            paint.setColor(Color.argb(255,180,135,255));
+            //draw the resualt button
+            canvas.drawText("I KNOW THE ANSWER", 230, 1020, paint1);
 
             //draw the score
             paint.setTextSize(60);
-            canvas.drawText("Your Answer: " + lives, 150, 1020, paint);
+            paint.setColor(Color.argb(255,180,135,255));
             canvas.drawText("Score " + score +"/"+hits + "     Lives " + lives, 1200, 1020, paint);
 
             //pause button
@@ -353,7 +361,6 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
                     bat.setMovmentState(bat.LEFT);
                 }
 
-
                 if(motionEvent.getX() < 87 && motionEvent.getY() > 953 && motionEvent.getY() < 1030){
                     if(playing == false){
                         playing = true;
@@ -361,10 +368,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
                     }else{
                         pause();
                     }
-
-
                 }
-
 
                 break;
 
