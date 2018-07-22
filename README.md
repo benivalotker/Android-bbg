@@ -1,4 +1,4 @@
-# Game Name: BBG Game (Brick Brack & Guess)
+# Game Name: BBG Game (Brick Break & Guess)
 
 
 # Description: 
