@@ -36,7 +36,7 @@
             android:theme="@style/Theme.AppCompat.Dialog.Alert"></activity>
         <activity
             android:name=".Guess"
-            android:label="@string/title_activity_dialog"
+            android:label=" "
             android:theme="@style/Theme.AppCompat.Dialog.Alert"></activity>
     </application>
 
