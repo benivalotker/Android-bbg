@@ -1,5 +1,4 @@
 package com.shenkar.nik.bbgame;
-///////////////////beni valotker//////////////////////
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

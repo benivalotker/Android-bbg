@@ -1,6 +1,9 @@
 package com.shenkar.nik.bbgame;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
@@ -94,8 +97,14 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
     Random rnd = new Random();
 
 
+    //context
+    private Context mContext;
+
     public BreakoutEngine(Context context, int x, int y){
         super(context);
+
+        this.mContext = context;
+
 
         //initilaize ourHolder and paint object
         ourHolder = getHolder();
@@ -341,7 +350,9 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
             //pause button
             canvas.drawBitmap(ScaleBitmap, 10, 940 , null);
 
-            //show all
+
+
+            //unlock the thread
             ourHolder.unlockCanvasAndPost(canvas);
         }
     }
@@ -367,6 +378,9 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
                         resume();
                     }else{
                         pause();
+                        mContext = getContext();
+                        Intent intent = new Intent(mContext, Dialog.class);
+                        mContext.startActivity(intent);
                     }
                 }
 
