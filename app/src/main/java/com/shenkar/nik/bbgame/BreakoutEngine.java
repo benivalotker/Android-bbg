@@ -16,6 +16,7 @@ import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.media.SoundPool;
+import android.os.Debug;
 import android.text.TextPaint;
 import android.util.Log;
 import android.view.Display;
@@ -24,6 +25,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.WindowManager;
 
+import java.io.Console;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Random;
@@ -340,15 +342,15 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
             }
 
             //draw the resualt button
-            canvas.drawText("I KNOW THE ANSWER", 230, 1020, paint1);
+            canvas.drawText("GUESS", (int)(screenX*0.88), (int)(screenY*0.95), paint1);
 
             //draw the score
             paint.setTextSize(60);
             paint.setColor(Color.argb(255,180,135,255));
-            canvas.drawText("Score " + score +"/"+hits + "     Lives " + lives, 1200, 1020, paint);
+            canvas.drawText("Score " + score +"/"+hits + "     Lives " + lives,(int)(screenX*0.3), (int)(screenY*0.95), paint);
 
             //pause button
-            canvas.drawBitmap(ScaleBitmap, 10, 940 , null);
+            canvas.drawBitmap(ScaleBitmap, 0, (int)(screenY * 0.9) , null);
 
 
 
@@ -363,27 +365,40 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
     public boolean onTouchEvent(MotionEvent motionEvent){
         switch (motionEvent.getAction() & MotionEvent.ACTION_MASK){
             //touch in the screen
+
             case MotionEvent.ACTION_DOWN:
                 paused = false;
-
                 if(motionEvent.getX() > screenX / 2 ) {
                     bat.setMovmentState(bat.RIGHT);
                 }else {
                     bat.setMovmentState(bat.LEFT);
                 }
 
-                if(motionEvent.getX() < 87 && motionEvent.getY() > 953 && motionEvent.getY() < 1030){
+                if(motionEvent.getX() < 100 && motionEvent.getY() > screenY * 0.9 && motionEvent.getY() < screenY ){
                     if(playing == false){
                         playing = true;
                         resume();
                     }else{
                         pause();
                         mContext = getContext();
-                        //Intent intent = new Intent(mContext, Dialog.class);
+                        Intent intent = new Intent(mContext, Dialog.class);
+                       // Intent intent = new Intent(mContext, Guess.class);
+                        mContext.startActivity(intent);
+                    }
+                }
+
+                if(motionEvent.getY() > screenY * 0.9 && motionEvent.getX() > screenX * 0.88 && motionEvent.getX() < screenX ){
+                    if(playing == false){
+                        playing = true;
+                        resume();
+                    }else{
+                        pause();
+                        mContext = getContext();
                         Intent intent = new Intent(mContext, Guess.class);
                         mContext.startActivity(intent);
                     }
                 }
+
 
                 break;
 
