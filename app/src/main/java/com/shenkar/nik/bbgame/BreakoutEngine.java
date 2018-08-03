@@ -91,7 +91,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
     Bitmap  backgroundConfig;
 
     //text array
-    String [] textarray = {"U", "M", "B", "R", "E", "L", "L", "A"};
+    String [] textarray = {"u", "m", "b", "r", "e", "l", "l", "a"};
 
     //random
     Random rnd = new Random();
@@ -379,7 +379,8 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
                     }else{
                         pause();
                         mContext = getContext();
-                        Intent intent = new Intent(mContext, Dialog.class);
+                        //Intent intent = new Intent(mContext, Dialog.class);
+                        Intent intent = new Intent(mContext, Guess.class);
                         mContext.startActivity(intent);
                     }
                 }

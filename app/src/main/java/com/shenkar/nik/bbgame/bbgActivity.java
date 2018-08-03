@@ -10,7 +10,7 @@ import android.view.Display;
 
 public class bbgActivity extends Activity {
 
-    BreakoutEngine breakoutEngine;
+    public static BreakoutEngine breakoutEngine;
     MediaPlayer mMediaPlayer;
     int length;
     @Override
