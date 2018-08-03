@@ -314,7 +314,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
             paint.setColor(Color.argb(255,  133, 255, 144));
 
             //draw bat
-            canvas.drawRect(bat.getRect(), paint);
+            canvas.drawRoundRect(bat.getRect(),10,10, paint);
 
             //draw ball
             canvas.drawRect(ball.getRect(), paint);
@@ -336,7 +336,8 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
                 float textHeight = textPaint.descent() - textPaint.ascent();
                 float textOffset = (textHeight / 2) - textPaint.descent();
 
-                canvas.drawRect(rect, paint);
+                canvas.drawRoundRect(rect,20,20,paint);
+               // canvas.drawRect(rect, paint);
                 canvas.drawText(textarray[i], rect.centerX(), rect.centerY() + textOffset, textPaint);
 
             }
