@@ -24,11 +24,12 @@ public class Guess extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess);
 
+        int level = bbgActivity.breakoutEngine.getLevel();
         guessbox=(TextView) findViewById(R.id.guessbox);
         inputword = (EditText) findViewById(R.id.inputword);
         guessbutton=(Button) findViewById(R.id.guessbutton);
 
-        final String tmpString = Arrays.toString(bbgActivity.breakoutEngine.textarray);
+        final String tmpString = Arrays.toString(bbgActivity.breakoutEngine.textarray[level]);
         //final String  guessword = tmpString.replaceAll(", ", "");
         final String  guessword = tmpString.replaceAll("[^a-zA-Z0-9]", "");
 
@@ -40,6 +41,8 @@ public class Guess extends AppCompatActivity {
                 word = inputword.getText().toString();
                 if(word.equals(guessword)){
                     showToast();
+                    bbgActivity.breakoutEngine.levelUp();
+                    finish();
                 }
                 //bbgActivity.breakoutEngine.resume();
                  // bbgActivity.breakoutEngine.textarray;

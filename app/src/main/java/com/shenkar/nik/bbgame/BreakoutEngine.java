@@ -93,11 +93,13 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
     Bitmap  backgroundConfig;
 
     //text array
-    String [] textarray = {"u", "m", "b", "r", "e", "l", "l", "a"};
-
+   // String [] textarray = {"u", "m", "b", "r", "e", "l", "l", "a"};
+    //String [] textarray2 = {"b", "a", "l", "l"};
+    String [][] textarray = {{"u", "m", "b", "r", "e", "l", "l", "a"},{"b","a","l","l"},{"b","a","t"}};
     //random
     Random rnd = new Random();
 
+    int level = 0;
 
     //context
     private Context mContext;
@@ -275,11 +277,13 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
     }
 
     void restart(){
+        int level = getLevel();
+        int size = textarray[level].length;
         //put the ball back to the start
         ball.reset(screenX, screenY);
         bat.reset(screenX, screenY);
 
-        int brickWidth = screenX / 8;
+        int brickWidth = screenX / size;
         int brickHeight = screenY / 10;
 
         Arrays.fill(color, Color.GREEN);
@@ -287,7 +291,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
         //build a wall of brick
         numBrick = 0;
 
-        for(int col = 0; col < 8;col++){
+        for(int col = 0; col < size;col++){
             brick[numBrick] = new Brick(0, col, brickWidth, brickHeight);
             numBrick++;
         }
@@ -296,6 +300,36 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
         lives = 3;
         hits = 20;
     }
+
+
+    void levelUp(){
+        //int level = getLevel();
+        level++;
+        int size = textarray[level].length;
+        //put the ball back to the start
+        ball.reset(screenX, screenY);
+        bat.reset(screenX, screenY);
+
+        int brickWidth = screenX / size;
+        int brickHeight = screenY / 10;
+
+        Arrays.fill(color, Color.GREEN);
+
+        //build a wall of brick
+        numBrick = 0;
+
+        for(int col = 0; col < size;col++){
+            brick[numBrick] = new Brick(0, col, brickWidth, brickHeight);
+            numBrick++;
+        }
+
+        score = 0;
+        lives = 3;
+        hits = 20;
+    }
+
+
+
 
 
     private void draw() {
@@ -323,6 +357,9 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
             //draw brick
             RectF rect;
 
+            int level = getLevel();
+            int size = textarray[level].length;
+
             for(int i=0; i < numBrick; i++){
                 rect = brick[i].getRect();
 
@@ -338,7 +375,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
 
                 canvas.drawRoundRect(rect,20,20,paint);
                // canvas.drawRect(rect, paint);
-                canvas.drawText(textarray[i], rect.centerX(), rect.centerY() + textOffset, textPaint);
+                canvas.drawText(textarray[level][i], rect.centerX(), rect.centerY() + textOffset, textPaint);
 
             }
 
@@ -359,6 +396,16 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
             ourHolder.unlockCanvasAndPost(canvas);
         }
     }
+
+
+    void setLevel(){
+        level++;
+    }
+
+    int getLevel(){
+        return level;
+    }
+
 
 
     //screen touch
