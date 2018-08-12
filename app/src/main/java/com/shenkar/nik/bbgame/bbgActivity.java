@@ -46,7 +46,6 @@ public class bbgActivity extends Activity {
     }
     protected void onPause() {
         super.onPause();
-        System.out.println("pauseeeeeee");
         breakoutEngine.pause();
         mMediaPlayer.pause();
         length = mMediaPlayer.getCurrentPosition();

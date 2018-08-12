@@ -95,7 +95,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
     //text array
    // String [] textarray = {"u", "m", "b", "r", "e", "l", "l", "a"};
     //String [] textarray2 = {"b", "a", "l", "l"};
-    String [][] textarray = {{"u", "m", "b", "r", "e", "l", "l", "a"},{"b","a","l","l"},{"b","a","t"}};
+    String [][] textarray = {{"b","a","t"}, {"b","a","l","l"},{"u", "m", "b", "r", "e", "l", "l", "a"},{"b"}};
     //random
     Random rnd = new Random();
 
@@ -305,6 +305,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
     void levelUp(){
         //int level = getLevel();
         level++;
+
         int size = textarray[level].length;
         //put the ball back to the start
         ball.reset(screenX, screenY);
@@ -321,6 +322,12 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
         for(int col = 0; col < size;col++){
             brick[numBrick] = new Brick(0, col, brickWidth, brickHeight);
             numBrick++;
+        }
+
+        if(level == 3){
+            mContext = getContext();
+            Intent intent = new Intent(mContext, bbgActivityLevel2.class);
+            mContext.startActivity(intent);
         }
 
         score = 0;

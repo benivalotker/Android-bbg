@@ -33,11 +33,15 @@
         <activity
             android:name=".Dialog"
             android:label="@string/title_activity_dialog"
-            android:theme="@style/Theme.AppCompat.Dialog.Alert"></activity>
+            android:theme="@style/Theme.AppCompat.Dialog.Alert" />
         <activity
             android:name=".Guess"
             android:label=" "
-            android:theme="@style/Theme.AppCompat.Dialog.Alert"></activity>
+            android:theme="@style/Theme.AppCompat.Dialog.Alert" />
+        <activity
+            android:name=".bbgActivityLevel2"
+            android:label="@string/title_activity_bbg_level2"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
