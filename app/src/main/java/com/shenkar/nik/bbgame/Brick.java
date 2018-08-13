@@ -6,6 +6,7 @@ public class Brick {
     private RectF rect;
     private boolean isVisible;
 
+    //Constructor
     Brick(int row, int col, int width, int height){
         isVisible = true;
         int padding = 2;
@@ -17,6 +18,7 @@ public class Brick {
     }
 
 
+    //get the current brick
     RectF getRect(){
         return this.rect;
     }
