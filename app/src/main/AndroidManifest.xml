@@ -35,6 +35,10 @@
             android:label=" "
             android:theme="@style/Theme.AppCompat.Dialog.Alert" />
         <activity
+            android:name=".GuessLevel2"
+            android:label=" "
+            android:theme="@style/Theme.AppCompat.Dialog.Alert" />
+        <activity
             android:name=".bbgActivityLevel2"
             android:label="@string/title_activity_bbg_level2"
             android:theme="@style/AppTheme" />

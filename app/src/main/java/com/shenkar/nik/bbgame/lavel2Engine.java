@@ -430,7 +430,6 @@ public class lavel2Engine extends SurfaceView implements Runnable {
                         pause();
                         mContext = getContext();
                         Intent intent = new Intent(mContext, Dialog.class);
-                        // Intent intent = new Intent(mContext, Guess.class);
                         mContext.startActivity(intent);
                     }
                 }
@@ -442,7 +441,7 @@ public class lavel2Engine extends SurfaceView implements Runnable {
                     }else{
                         pause();
                         mContext = getContext();
-                        Intent intent = new Intent(mContext, Guess.class);
+                        Intent intent = new Intent(mContext, GuessLevel2.class);
                         mContext.startActivity(intent);
                     }
                 }

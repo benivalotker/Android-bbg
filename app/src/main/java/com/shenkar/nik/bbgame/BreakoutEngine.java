@@ -1,5 +1,6 @@
 package com.shenkar.nik.bbgame;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -328,6 +329,8 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
             mContext = getContext();
             Intent intent = new Intent(mContext, bbgActivityLevel2.class);
             mContext.startActivity(intent);
+            ((Activity)mContext).finish();
+
         }
 
         score = 0;
