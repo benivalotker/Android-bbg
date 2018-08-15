@@ -51,7 +51,7 @@ public class lavel2Engine extends SurfaceView implements Runnable {
     private Paint paint1;
 
     //color dynamic
-    private int [] color = new int[8];
+    private int [] color = new int[20];
 
     //screen width and height
     private int screenX;
@@ -84,7 +84,7 @@ public class lavel2Engine extends SurfaceView implements Runnable {
     int lives = 3;
 
     //hits
-    int hits = 20;
+    int hits = 30;
 
     //bitmap
     Bitmap  bitmap;
@@ -93,9 +93,8 @@ public class lavel2Engine extends SurfaceView implements Runnable {
     Bitmap  backgroundConfig;
 
     //text array
-    // String [] textarray = {"u", "m", "b", "r", "e", "l", "l", "a"};
-    //String [] textarray2 = {"b", "a", "l", "l"};
-    String [][] textarray = {{"u", "m", "b", "r", "e", "l", "l", "a"},{"b","a","l","l"},{"b","a","t"}};
+    String [][] textarray = {{"b", "r", "e", "a", "k", "-", "b", "r", "e","a","k"},{"g","a","m","e","-","o","f","-","t","h","r","o","n","e","s"},{"g","a","m","e","-","o","v","e","r"},{"b"}};
+
     //random
     Random rnd = new Random();
 
@@ -125,6 +124,7 @@ public class lavel2Engine extends SurfaceView implements Runnable {
         //create ball
         ball = new ball();
 
+
         //create pause button
         bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.puse);
         ScaleBitmap = Bitmap.createScaledBitmap(bitmap, 100, 100, true);
@@ -142,7 +142,7 @@ public class lavel2Engine extends SurfaceView implements Runnable {
         int width = display.getWidth();  // deprecated
         int height = display.getHeight();
 
-        bitmapBackground = BitmapFactory.decodeResource(getResources(), R.drawable.city);
+        bitmapBackground = BitmapFactory.decodeResource(getResources(), R.drawable.leveltwo);
         backgroundConfig = Bitmap.createScaledBitmap(bitmapBackground, width, height, true);
 
         //load sound
@@ -194,9 +194,10 @@ public class lavel2Engine extends SurfaceView implements Runnable {
             draw();
 
             //calculate the fps to use to resualt to time anomation and more
+            //ball speed
             timeThisFrame = System.currentTimeMillis() - startFrameTime;
             if(timeThisFrame >= 1){
-                fps = 1000 / timeThisFrame;
+                fps = 700 / timeThisFrame;
             }
         }
     }

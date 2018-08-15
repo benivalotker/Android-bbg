@@ -7,6 +7,7 @@ import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Display;
+import android.view.WindowManager;
 
 public class bbgActivity extends Activity {
 
@@ -17,6 +18,9 @@ public class bbgActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_bbg);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+
         mMediaPlayer = new MediaPlayer();
         mMediaPlayer = MediaPlayer.create(this,R.raw.song);
         mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
