@@ -1,9 +1,8 @@
 package com.shenkar.nik.bbgame;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
@@ -17,7 +16,6 @@ import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.media.SoundPool;
-import android.os.Debug;
 import android.text.TextPaint;
 import android.util.Log;
 import android.view.Display;
@@ -25,13 +23,12 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.WindowManager;
-
-import java.io.Console;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Random;
 
 
+@SuppressLint("ViewConstructor")
 public class BreakoutEngine extends SurfaceView implements Runnable {
 
     //out thread
@@ -46,8 +43,6 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
     //game is paused at start
     private boolean paused = true;
 
-    //cnvas & paint object
-    private Canvas canvas;
     private Paint paint;
     private Paint paint1;
 
@@ -60,9 +55,6 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
 
     //
     private long fps;
-
-    //calculate the fps
-    private long timeThisFrame;
 
     //player bat
     Bat bat;
@@ -94,9 +86,8 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
     Bitmap  backgroundConfig;
 
     //text array
-   // String [] textarray = {"u", "m", "b", "r", "e", "l", "l", "a"};
-    //String [] textarray2 = {"b", "a", "l", "l"};
     String [][] textarray = {{"b","a","t"}, {"b","a","l","l"},{"u", "m", "b", "r", "e", "l", "l", "a"},{"b"}};
+
     //random
     Random rnd = new Random();
 
@@ -137,7 +128,11 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
 
         //background
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+
+
+        assert wm != null;
         Display display = wm.getDefaultDisplay();
+
         Point size = new Point();
         display.getSize(size);
         int width = display.getWidth();  // deprecated
@@ -195,7 +190,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
             draw();
 
             //calculate the fps to use to resualt to time anomation and more
-            timeThisFrame = System.currentTimeMillis() - startFrameTime;
+            long timeThisFrame = System.currentTimeMillis() - startFrameTime;
             if(timeThisFrame >= 1){
                 fps = 1000 / timeThisFrame;
             }
@@ -213,7 +208,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
         for(int i=0; i< numBrick;i++){
             if (RectF.intersects(brick[i].getRect(), ball.getRect())) {
                 if (ourHolder.getSurface().isValid()) {
-                    if (brick[i].setInvisable() == "red")
+                    if (brick[i].setInvisable().equals("red"))
                         color[i] = Color.RED;
                     else
                         color[i] = Color.GREEN;
@@ -346,7 +341,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
         //chack if out game is valid or crash
         if(ourHolder.getSurface().isValid()){
             //ready to drew
-            canvas = ourHolder.lockCanvas();
+            Canvas canvas = ourHolder.lockCanvas();
 
             //drew the background color
             canvas.drawColor(Color.argb(255, 26, 128, 182));
@@ -368,7 +363,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
             RectF rect;
 
             int level = getLevel();
-            int size = textarray[level].length;
+            //int size = textarray[level].length;
 
             for(int i=0; i < numBrick; i++){
                 rect = brick[i].getRect();
@@ -408,9 +403,9 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
     }
 
 
-    void setLevel(){
+    /*void setLevel(){
         level++;
-    }
+    }*/
 
     int getLevel(){
         return level;
@@ -419,51 +414,56 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
 
 
     //screen touch
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent motionEvent){
-        switch (motionEvent.getAction() & MotionEvent.ACTION_MASK){
-            //touch in the screen
-
-            case MotionEvent.ACTION_DOWN:
-                paused = false;
-                if(motionEvent.getX() > screenX / 2 ) {
-                    bat.setMovmentState(bat.RIGHT);
-                }else {
-                    bat.setMovmentState(bat.LEFT);
-                }
-
-                if(motionEvent.getX() < 100 && motionEvent.getY() > screenY * 0.9 && motionEvent.getY() < screenY ){
-                    if(playing == false){
-                        playing = true;
-                        resume();
-                    }else{
-                        pause();
-                        mContext = getContext();
-                        Intent intent = new Intent(mContext, Dialog.class);
-                       // Intent intent = new Intent(mContext, Guess.class);
-                        mContext.startActivity(intent);
+        try{
+            switch (motionEvent.getAction() & MotionEvent.ACTION_MASK){
+                //touch in the screen
+                case MotionEvent.ACTION_DOWN:
+                    paused = false;
+                    if(motionEvent.getX() > screenX / 2 ) {
+                        bat.setMovmentState(bat.RIGHT);
+                    }else {
+                        bat.setMovmentState(bat.LEFT);
                     }
-                }
 
-                if(motionEvent.getY() > screenY * 0.9 && motionEvent.getX() > screenX * 0.88 && motionEvent.getX() < screenX ){
-                    if(playing == false){
-                        playing = true;
-                        resume();
-                    }else{
-                        pause();
-                        mContext = getContext();
-                        Intent intent = new Intent(mContext, Guess.class);
-                        mContext.startActivity(intent);
+                    if(motionEvent.getX() < 100 && motionEvent.getY() > screenY * 0.9 && motionEvent.getY() < screenY ){
+                        if(!playing){
+                            playing = true;
+                            resume();
+                        }else{
+                            pause();
+                            mContext = getContext();
+                            Intent intent = new Intent(mContext, Dialog.class);
+                            // Intent intent = new Intent(mContext, Guess.class);
+                            mContext.startActivity(intent);
+                        }
                     }
-                }
+
+                    if(motionEvent.getY() > screenY * 0.9 && motionEvent.getX() > screenX * 0.88 && motionEvent.getX() < screenX ){
+                        if(!playing){
+                            playing = true;
+                            resume();
+                        }else{
+                            pause();
+                            mContext = getContext();
+                            Intent intent = new Intent(mContext, Guess.class);
+                            mContext.startActivity(intent);
+                        }
+                    }
 
 
-                break;
+                    break;
 
-            case MotionEvent.ACTION_UP:
-                bat.setMovmentState(bat.STOP);
-                break;
+                case MotionEvent.ACTION_UP:
+                    bat.setMovmentState(bat.STOP);
+                    break;
+            }
+        }catch (Exception e){
+            Log.e("errorrrrrrrrrrrrrrr",e.getMessage());
         }
+
 
         return true;
     }

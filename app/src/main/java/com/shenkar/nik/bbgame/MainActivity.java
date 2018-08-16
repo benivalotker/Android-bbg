@@ -8,9 +8,6 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button soundButton;
-    private Button playButton;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,8 +16,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 
-        soundButton = (Button) findViewById(R.id.sound);
-        playButton = (Button) findViewById(R.id.play);
+        Button soundButton = (Button) findViewById(R.id.sound);
+        Button playButton = (Button) findViewById(R.id.play);
 
         playButton.setOnClickListener(this);
         soundButton.setOnClickListener(this);

@@ -1,15 +1,13 @@
 package com.shenkar.nik.bbgame;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.WindowManager;
-import android.widget.VideoView;
 
 public class Splash extends AppCompatActivity {
 
-    VideoView videoView;
+    //VideoView videoView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

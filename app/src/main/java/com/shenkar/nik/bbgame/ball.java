@@ -39,7 +39,6 @@ public class ball {
 
     void setRandomX(){
         Random gen = new Random();
-        int answer = gen.nextInt(2);
     }
 
     void clearY(float y){

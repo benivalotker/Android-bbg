@@ -1,6 +1,5 @@
 package com.shenkar.nik.bbgame;
 import android.graphics.RectF;
-import android.widget.TextView;
 
 public class Brick {
     private RectF rect;
@@ -25,7 +24,7 @@ public class Brick {
 
     //on touch the color change
     String setInvisable(){
-        if(isVisible == false){
+        if(!isVisible){
             isVisible = true;
             return "green";
         }
@@ -37,8 +36,8 @@ public class Brick {
     }
 
     //returns if the brick is visible
-    boolean getVisibla(){
+    /*boolean getVisibla(){
         return isVisible;
-    }
+    }*/
 
 }

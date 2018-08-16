@@ -1,5 +1,6 @@
 package com.shenkar.nik.bbgame;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -33,11 +34,12 @@ public class soundActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 
-        imageView = (ImageView)findViewById(R.id.mute) ;
-        imageView2 = (ImageView)findViewById(R.id.unMute) ;
-        textview = (TextView)findViewById(R.id.textView1);
-        seekbar = (SeekBar)findViewById(R.id.seekBar);
+        imageView = findViewById(R.id.mute);
+        imageView2 = findViewById(R.id.unMute);
+        textview = findViewById(R.id.textView1);
+        seekbar = findViewById(R.id.seekBar);
         audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        assert audioManager != null;
         seekbar.setMax(audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
 
         imageView.setColorFilter(Color.RED, PorterDuff.Mode.MULTIPLY);
@@ -58,6 +60,7 @@ public class soundActivity extends AppCompatActivity {
 
 
         seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
 

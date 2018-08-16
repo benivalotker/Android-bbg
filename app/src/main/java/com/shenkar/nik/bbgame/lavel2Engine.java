@@ -1,8 +1,7 @@
 package com.shenkar.nik.bbgame;
 
-import android.app.AlertDialog;
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
@@ -16,7 +15,6 @@ import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.media.SoundPool;
-import android.os.Debug;
 import android.text.TextPaint;
 import android.util.Log;
 import android.view.Display;
@@ -24,13 +22,12 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.WindowManager;
-
-import java.io.Console;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Random;
 
 
+@SuppressLint("ViewConstructor")
 public class lavel2Engine extends SurfaceView implements Runnable {
 
     //out thread
@@ -45,8 +42,6 @@ public class lavel2Engine extends SurfaceView implements Runnable {
     //game is paused at start
     private boolean paused = true;
 
-    //cnvas & paint object
-    private Canvas canvas;
     private Paint paint;
     private Paint paint1;
 
@@ -59,9 +54,6 @@ public class lavel2Engine extends SurfaceView implements Runnable {
 
     //
     private long fps;
-
-    //calculate the fps
-    private long timeThisFrame;
 
     //player bat
     Bat bat;
@@ -93,7 +85,7 @@ public class lavel2Engine extends SurfaceView implements Runnable {
     Bitmap  backgroundConfig;
 
     //text array
-    String [][] textarray = {{"b", "r", "e", "a", "k", "-", "b", "r", "e","a","k"},{"g","a","m","e","-","o","f","-","t","h","r","o","n","e","s"},{"g","a","m","e","-","o","v","e","r"},{"b"}};
+    String [][] textarray = {{"b", "r"},{"g","a","m","e","-","o","f","-","t","h","r","o","n","e","s"},{"g","a","m","e","-","o","v","e","r"},{"b"}};
 
     //random
     Random rnd = new Random();
@@ -130,12 +122,13 @@ public class lavel2Engine extends SurfaceView implements Runnable {
         ScaleBitmap = Bitmap.createScaledBitmap(bitmap, 100, 100, true);
 
         //paint1
-        paint1.setColor(Color.GREEN);
+        paint1.setColor(Color.BLUE);
         paint1.setTextSize(60);
         paint1.setTypeface(Typeface.create("Arial",Typeface.BOLD_ITALIC));
 
         //background
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        assert wm != null;
         Display display = wm.getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
@@ -195,7 +188,7 @@ public class lavel2Engine extends SurfaceView implements Runnable {
 
             //calculate the fps to use to resualt to time anomation and more
             //ball speed
-            timeThisFrame = System.currentTimeMillis() - startFrameTime;
+            long timeThisFrame = System.currentTimeMillis() - startFrameTime;
             if(timeThisFrame >= 1){
                 fps = 700 / timeThisFrame;
             }
@@ -213,10 +206,10 @@ public class lavel2Engine extends SurfaceView implements Runnable {
         for(int i=0; i< numBrick;i++){
             if (RectF.intersects(brick[i].getRect(), ball.getRect())) {
                 if (ourHolder.getSurface().isValid()) {
-                    if (brick[i].setInvisable() == "red")
-                        color[i] = Color.RED;
+                    if (brick[i].setInvisable().equals("red"))
+                        color[i] = Color.YELLOW;
                     else
-                        color[i] = Color.GREEN;
+                        color[i] = Color.BLUE;
 
                     paint1.setColor(Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256)));
                     ball.reverseY();
@@ -287,7 +280,7 @@ public class lavel2Engine extends SurfaceView implements Runnable {
         int brickWidth = screenX / size;
         int brickHeight = screenY / 10;
 
-        Arrays.fill(color, Color.GREEN);
+        Arrays.fill(color, Color.BLUE);
 
         //build a wall of brick
         numBrick = 0;
@@ -337,7 +330,7 @@ public class lavel2Engine extends SurfaceView implements Runnable {
         //chack if out game is valid or crash
         if(ourHolder.getSurface().isValid()){
             //ready to drew
-            canvas = ourHolder.lockCanvas();
+            Canvas canvas = ourHolder.lockCanvas();
 
             //drew the background color
             canvas.drawColor(Color.argb(255, 26, 128, 182));
@@ -359,12 +352,12 @@ public class lavel2Engine extends SurfaceView implements Runnable {
             RectF rect;
 
             int level = getLevel();
-            int size = textarray[level].length;
+            //int size = textarray[level].length;
 
             for(int i=0; i < numBrick; i++){
                 rect = brick[i].getRect();
 
-                paint.setColor(Color.GREEN);
+                paint.setColor(Color.BLUE);
                 TextPaint textPaint = new TextPaint();
                 textPaint.setColor(color[i]);
                 textPaint.setTextAlign(Paint.Align.CENTER);
@@ -399,9 +392,9 @@ public class lavel2Engine extends SurfaceView implements Runnable {
     }
 
 
-    void setLevel(){
+    /*void setLevel(){
         level++;
-    }
+    }*/
 
     int getLevel(){
         return level;
@@ -410,6 +403,7 @@ public class lavel2Engine extends SurfaceView implements Runnable {
 
 
     //screen touch
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent motionEvent){
         switch (motionEvent.getAction() & MotionEvent.ACTION_MASK){
@@ -424,7 +418,7 @@ public class lavel2Engine extends SurfaceView implements Runnable {
                 }
 
                 if(motionEvent.getX() < 100 && motionEvent.getY() > screenY * 0.9 && motionEvent.getY() < screenY ){
-                    if(playing == false){
+                    if(!playing){
                         playing = true;
                         resume();
                     }else{
@@ -436,7 +430,7 @@ public class lavel2Engine extends SurfaceView implements Runnable {
                 }
 
                 if(motionEvent.getY() > screenY * 0.9 && motionEvent.getX() > screenX * 0.88 && motionEvent.getX() < screenX ){
-                    if(playing == false){
+                    if(!playing){
                         playing = true;
                         resume();
                     }else{

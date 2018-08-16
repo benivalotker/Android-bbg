@@ -1,7 +1,6 @@
 package com.shenkar.nik.bbgame;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.graphics.Point;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
