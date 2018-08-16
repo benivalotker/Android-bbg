@@ -11,7 +11,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="landscape"
+            >
 
         </activity>
         <activity
@@ -40,10 +41,11 @@
             android:theme="@style/Theme.AppCompat.Dialog.Alert" />
         <activity
             android:name=".bbgActivityLevel2"
+            android:screenOrientation="landscape"
             android:label="@string/title_activity_bbg_level2"
             android:theme="@style/AppTheme" />
 
-        <activity android:name=".Splash">
+        <activity android:name=".Splash" android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
