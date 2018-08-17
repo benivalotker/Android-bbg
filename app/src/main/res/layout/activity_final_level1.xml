@@ -7,18 +7,12 @@
     android:background="@android:color/holo_blue_light"
     tools:context=".FinalLevel1">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp"
-        android:text="CONGRATULATIONS"
-        android:textSize="30sp"
-        android:layout_centerVertical="true"/>
 
-
+    <pl.droidsonroids.gif.GifTextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/giphy"
+        ></pl.droidsonroids.gif.GifTextView>
 
     <Button
         android:id="@+id/exit"

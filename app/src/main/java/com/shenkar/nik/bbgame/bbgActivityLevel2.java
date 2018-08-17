@@ -22,7 +22,7 @@ public class bbgActivityLevel2 extends AppCompatActivity {
 
 
         mMediaPlayer = new MediaPlayer();
-        mMediaPlayer = MediaPlayer.create(this,R.raw.song);
+        mMediaPlayer = MediaPlayer.create(this,R.raw.song2);
         mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         mMediaPlayer.setLooping(true);
         mMediaPlayer.start();

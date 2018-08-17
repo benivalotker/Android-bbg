@@ -27,9 +27,6 @@ public class FinalLevel1 extends AppCompatActivity implements View.OnClickListen
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        final TextView text = findViewById(R.id.textView2);
-        text.startAnimation(AnimationUtils.loadAnimation(FinalLevel1.this, android.R.anim.fade_in));
-
         getWindow().setLayout((int)(width*.7), (int)(height*.7));
 
         exit.setOnClickListener(this);
