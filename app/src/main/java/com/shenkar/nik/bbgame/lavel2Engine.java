@@ -105,7 +105,7 @@ public class lavel2Engine extends SurfaceView implements Runnable {
         ourHolder = getHolder();
         paint = new Paint();
         paint1= new Paint();
-        Arrays.fill(color, Color.GREEN);
+        Arrays.fill(color, Color.BLUE);
 
         screenX = x;
         screenY = y;
@@ -307,7 +307,7 @@ public class lavel2Engine extends SurfaceView implements Runnable {
         int brickWidth = screenX / size;
         int brickHeight = screenY / 10;
 
-        Arrays.fill(color, Color.GREEN);
+        Arrays.fill(color, Color.BLUE);
 
         //build a wall of brick
         numBrick = 0;
