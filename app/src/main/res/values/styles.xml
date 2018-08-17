@@ -12,4 +12,7 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+        <style name="AppTheme.level1" >
+            <item name="android:windowIsTranslucent">true</item>
+        </style>
 </resources>

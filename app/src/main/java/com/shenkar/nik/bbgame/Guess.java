@@ -43,23 +43,13 @@ public class Guess extends AppCompatActivity {
                     bbgActivity.breakoutEngine.levelUp();
                     finish();
                 }
-                //bbgActivity.breakoutEngine.resume();
-                 // bbgActivity.breakoutEngine.textarray;
+
             }
         });
-
-        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });*/
-
     }
 
     private void showToast() {
-        Toast.makeText(Guess.this,"YOU WIN!",Toast.LENGTH_LONG).show();
+        Toast.makeText(Guess.this,"YOU RIGHT! MOVING TO NEXT STEP...!",Toast.LENGTH_LONG).show();
     }
 
 

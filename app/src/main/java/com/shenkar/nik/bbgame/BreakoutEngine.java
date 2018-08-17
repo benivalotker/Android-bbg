@@ -329,9 +329,11 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
 
         if(level == 3){
             mContext = getContext();
-            Intent intent = new Intent(mContext, bbgActivityLevel2.class);
+            //Intent intent = new Intent(mContext, bbgActivityLevel2.class);
+            pause();
+            Intent intent = new Intent(mContext, FinalLevel1.class);
             mContext.startActivity(intent);
-            ((Activity)mContext).finish();
+            //((Activity)mContext).finish();
 
         }
 
