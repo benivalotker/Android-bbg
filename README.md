@@ -1,4 +1,5 @@
 # Game Name: BBG Game (Brick Break & Guess)
+![alt text](https://github.com/nikita-br/bbg/blob/master/play.png)
 
 
 # Description: 
