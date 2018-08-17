@@ -10,10 +10,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a91f92f-8416-4b4d-8947-25e8882ff8d2" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/fileHashes/fileHashes.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -2586,7 +2582,14 @@
       <option name="project" value="LOCAL" />
       <updated>1534491205997</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Updated FinalLevel1">
+      <created>1534495810496</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1534495810496</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2665,7 +2668,8 @@
     <MESSAGE value="created rounded_buttons.xml and made rounded buttons" />
     <MESSAGE value="updated breakOutEngine" />
     <MESSAGE value="Updated FinalLevel1 + Added new sound for activity 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated FinalLevel1 + Added new sound for activity 2" />
+    <MESSAGE value="Updated FinalLevel1" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated FinalLevel1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
