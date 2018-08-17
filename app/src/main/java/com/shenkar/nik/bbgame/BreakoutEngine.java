@@ -206,17 +206,24 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
 
         //chack for ball toch on brick
         for(int i=0; i< numBrick;i++){
-            if (RectF.intersects(brick[i].getRect(), ball.getRect())) {
-                if (ourHolder.getSurface().isValid()) {
-                    if (brick[i].setInvisable().equals("red"))
-                        color[i] = Color.RED;
-                    else
-                        color[i] = Color.GREEN;
+            try{
+                if (RectF.intersects(brick[i].getRect(), ball.getRect())) {
+                    if (ourHolder.getSurface().isValid()) {
+                        System.out.println("outHolder = " + ourHolder.getSurface().isValid());
+                        if (brick[i].setInvisable().equals("red"))
+                            color[i] = Color.RED;
+                        else
+                            color[i] = Color.GREEN;
 
-                    paint1.setColor(Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256)));
-                    ball.reverseY();
-                    score++;
+                        System.out.println("brick = " + brick[i]);
+                        paint1.setColor(Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256)));
+                        ball.reverseY();
+                        score++;
+                    }
                 }
+            }catch (Exception e){
+                Log.e("errorrrrrrrrrrrrrrr",e.getMessage());
+
             }
         }
 
@@ -225,7 +232,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
             ball.setRandomX();
             ball.reverseY();
             ball.clearY(bat.getRect().top - 2);
-            soundPool.play(deep1ID, 1, 1, 0,0,1);
+            //soundPool.play(deep1ID, 1, 1, 0,0,1);
         }
 
 
@@ -236,7 +243,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
 
             //lose a life
             lives--;
-            soundPool.play(deep1ID, 1, 1, 0,0,1);
+            //soundPool.play(deep1ID, 1, 1, 0,0,1);
 
             if(lives == 0){
                 paused = true;
