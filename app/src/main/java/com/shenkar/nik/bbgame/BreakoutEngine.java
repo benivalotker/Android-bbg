@@ -85,8 +85,8 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
     Bitmap  ScaleBitmap;
     Bitmap  backgroundConfig;
 
-    //text array
-    String [][] textarray = {{"b","a","t"}, {"b","a","l","l"},{"u", "m", "b", "r", "e", "l", "l", "a"},{"b"}};
+    //array of the words that the player has to guess
+    String [][] textarray = {{"c","a","t"}, {"b","a","l","l"},{"u", "m", "b", "r", "e", "l", "l", "a"},{"b"}};
 
     //random
     Random rnd = new Random();
