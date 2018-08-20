@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".bbgActivity"
             android:screenOrientation="landscape"
@@ -50,9 +50,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FinalLevel1" android:theme="@style/AppTheme.level1" android:screenOrientation="landscape">
-
-        </activity>
+        <activity
+            android:name=".FinalLevel1"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.level1"></activity>
+        <activity android:name=".GameOver"></activity>
     </application>
 
 </manifest>

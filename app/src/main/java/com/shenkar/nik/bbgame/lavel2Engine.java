@@ -340,6 +340,15 @@ public class lavel2Engine extends SurfaceView implements Runnable {
             numBrick++;
         }
 
+        if(level == 3){
+            mContext = getContext();
+            //Intent intent = new Intent(mContext, bbgActivityLevel2.class);
+            pause();
+            Intent intent = new Intent(mContext, GameOver.class);
+            mContext.startActivity(intent);
+            //((Activity)mContext).finish();
+        }
+
         score = 0;
         lives = 3;
         hits = 20;
