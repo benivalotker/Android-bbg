@@ -46,7 +46,7 @@ public class GuessLevel2 extends AppCompatActivity {
     }
 
     private void showToast() {
-        Toast.makeText(GuessLevel2.this,"YOU WIN!",Toast.LENGTH_LONG).show();
+        Toast.makeText(GuessLevel2.this,"YOU RIGHT! MOVING TO NEXT STEP...!",Toast.LENGTH_LONG).show();
     }
 
 

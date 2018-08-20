@@ -79,6 +79,8 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
     //hits
     int hits = 20;
 
+    RectF exception = null;
+
     //bitmap
     Bitmap  bitmap;
     Bitmap  bitmapBackground;
@@ -204,18 +206,25 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
         //update the ball
         ball.update(fps);
 
+
         //chack for ball toch on brick
         for(int i=0; i< numBrick;i++){
             try{
                 if (RectF.intersects(brick[i].getRect(), ball.getRect())) {
+                    if(brick[i].getRect() == exception){
+
+                       continue;
+                    }
+
+                    exception = brick[i].getRect();
+
                     if (ourHolder.getSurface().isValid()) {
-                        System.out.println("outHolder = " + ourHolder.getSurface().isValid());
+
                         if (brick[i].setInvisable().equals("red"))
                             color[i] = Color.RED;
                         else
                             color[i] = Color.GREEN;
 
-                        System.out.println("brick = " + brick[i]);
                         paint1.setColor(Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256)));
                         ball.reverseY();
                         score++;
@@ -226,6 +235,8 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
 
             }
         }
+        System.out.println("000000000000000000000000: continu");
+
 
         //chack for the ball touch in bat
         if(RectF.intersects(bat.getRect(), ball.getRect())){
@@ -294,6 +305,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
         //build a wall of brick
         numBrick = 0;
 
+        //row position | col position | brick width | brick height
         for(int col = 0; col < size;col++){
             brick[numBrick] = new Brick(0, col, brickWidth, brickHeight);
             numBrick++;
@@ -334,7 +346,6 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
             Intent intent = new Intent(mContext, FinalLevel1.class);
             mContext.startActivity(intent);
             //((Activity)mContext).finish();
-
         }
 
         score = 0;
@@ -469,7 +480,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
                     bat.setMovmentState(bat.STOP);
                     break;
             }
-        }catch (Exception e){
+        }catch (NullPointerException e){
             Log.e("errorrrrrrrrrrrrrrr",e.getMessage());
         }
 

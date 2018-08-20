@@ -21,8 +21,8 @@ public class FinalLevel1 extends AppCompatActivity implements View.OnClickListen
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
 
-        Button exit = (Button) findViewById(R.id.exit);
-        Button next = (Button) findViewById(R.id.next);
+        Button exit = findViewById(R.id.exit);
+        Button next = findViewById(R.id.next);
 
         int width = dm.widthPixels;
         int height = dm.heightPixels;

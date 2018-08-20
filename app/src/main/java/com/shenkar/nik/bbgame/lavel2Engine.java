@@ -15,6 +15,7 @@ import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.media.SoundPool;
+import android.os.SystemClock;
 import android.text.TextPaint;
 import android.util.Log;
 import android.view.Display;
@@ -78,6 +79,8 @@ public class lavel2Engine extends SurfaceView implements Runnable {
     //hits
     int hits = 30;
 
+    RectF exception = null;
+
     //bitmap
     Bitmap  bitmap;
     Bitmap  bitmapBackground;
@@ -85,7 +88,7 @@ public class lavel2Engine extends SurfaceView implements Runnable {
     Bitmap  backgroundConfig;
 
     //text array
-    String [][] textarray = {{"b", "r"},{"g","a","m","e","-","o","f","-","t","h","r","o","n","e","s"},{"g","a","m","e","-","o","v","e","r"},{"b"}};
+    String [][] textarray = {{"m", "i","c", "h","a", "e","l", "J","a", "c","k", "s","o", "n"},{"g","a","m","e","O","f","T","h","r","o","n","e","s"},{"g","a","m","e","O","v","e","r"},{"b"}};
 
     //random
     Random rnd = new Random();
@@ -205,6 +208,12 @@ public class lavel2Engine extends SurfaceView implements Runnable {
         //chack for ball toch on brick
         for(int i=0; i< numBrick;i++){
             if (RectF.intersects(brick[i].getRect(), ball.getRect())) {
+                if(brick[i].getRect() == exception){
+
+                    continue;
+                }
+
+                exception = brick[i].getRect();
                 if (ourHolder.getSurface().isValid()) {
                     if (brick[i].setInvisable().equals("red"))
                         color[i] = Color.YELLOW;
@@ -286,6 +295,13 @@ public class lavel2Engine extends SurfaceView implements Runnable {
         numBrick = 0;
 
         for(int col = 0; col < size;col++){
+            int mod = numBrick % 2;
+            if (mod == 0){
+                brick[numBrick] = new Brick(1, col, brickWidth, brickHeight);
+                numBrick++;
+                continue;
+            }
+
             brick[numBrick] = new Brick(0, col, brickWidth, brickHeight);
             numBrick++;
         }
@@ -313,6 +329,13 @@ public class lavel2Engine extends SurfaceView implements Runnable {
         numBrick = 0;
 
         for(int col = 0; col < size;col++){
+            int mod = numBrick % 2;
+            if (mod == 0){
+                brick[numBrick] = new Brick(1, col, brickWidth, brickHeight);
+                numBrick++;
+                continue;
+            }
+
             brick[numBrick] = new Brick(0, col, brickWidth, brickHeight);
             numBrick++;
         }
@@ -374,7 +397,7 @@ public class lavel2Engine extends SurfaceView implements Runnable {
             }
 
             //draw the resualt button
-            canvas.drawText("GUESS 2", (int)(screenX*0.88), (int)(screenY*0.95), paint1);
+            canvas.drawText("GUESS", (int)(screenX*0.88), (int)(screenY*0.95), paint1);
 
             //draw the score
             paint.setTextSize(60);
