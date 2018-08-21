@@ -7,6 +7,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 
 public class GameOver extends AppCompatActivity implements View.OnClickListener {
 
@@ -21,23 +22,16 @@ public class GameOver extends AppCompatActivity implements View.OnClickListener 
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
 
-        Button exit = findViewById(R.id.exit);
+        RelativeLayout rlayout = (RelativeLayout) findViewById(R.id.gameover);
+        rlayout.setOnClickListener(this);
 
-        int width = dm.widthPixels;
-        int height = dm.heightPixels;
-
-        getWindow().setLayout((int)(width*.7), (int)(height*.7));
-
-        exit.setOnClickListener(this);
     }
 
     @Override
-    public void onClick(View v){
-        switch (v.getId()){
-            case R.id.exit:
-                Intent intent = new Intent(this,MainActivity.class);
-                startActivity(intent);
-                break;
-        }
+    public void onClick(View v) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
+
+
 }

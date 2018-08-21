@@ -18,7 +18,8 @@
     <TextView
         android:id="@+id/guessbox"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        />
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
@@ -30,7 +31,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"
+            android:imeOptions="flagNoExtractUi"
+            />
 
         <Button
             android:id="@+id/guessbutton"

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/holo_blue_light"
+    android:id="@+id/level1finish"
     tools:context=".FinalLevel1">
 
 
@@ -14,24 +15,4 @@
         android:background="@drawable/giphy"
         ></pl.droidsonroids.gif.GifTextView>
 
-    <Button
-        android:id="@+id/exit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/next"
-        android:layout_marginStart="91dp"
-        android:text="EXIT" />
-
-    <Button
-        android:id="@+id/next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="78dp"
-        android:layout_marginEnd="90dp"
-        android:text="NEXT" />
 </RelativeLayout>

@@ -5,37 +5,31 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
-import android.widget.Button;
+import android.view.WindowManager;
+import android.widget.RelativeLayout;
 
-public class FinalLevel1 extends AppCompatActivity implements View.OnClickListener {
+public class FinalLevel1 extends AppCompatActivity  implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_final_level1);
 
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
 
-        Button exit = findViewById(R.id.exit);
-        Button next = findViewById(R.id.next);
+        RelativeLayout rlayout = (RelativeLayout) findViewById(R.id.level1finish);
+        rlayout.setOnClickListener(this);
 
-        exit.setOnClickListener(this);
-        next.setOnClickListener(this);
     }
 
     @Override
-    public void onClick(View v){
-        switch (v.getId()){
-            case R.id.exit:
-                Intent intent = new Intent(this,MainActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.next:
-                Intent intent2 = new Intent(this,bbgActivityLevel2.class);
-                startActivity(intent2);
-                break;
-        }
+    public void onClick(View v) {
+        Intent intent = new Intent(this, bbgActivityLevel2.class);
+        startActivity(intent);
     }
 
 
