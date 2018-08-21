@@ -12,31 +12,32 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="#3E80B4"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        >
 
         <Button
             android:id="@+id/btn_startOver"
             android:layout_width="100dp"
             android:layout_height="30dp"
-            android:layout_marginRight="-50dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="20dp"
             android:background="@android:color/white"
             android:clickable="true"
             android:text="Start Over"
             android:textColor="#5DBCD2"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            />
 
         <Button
             android:id="@+id/btn_exit"
             android:layout_width="100dp"
             android:layout_height="30dp"
-            android:layout_marginLeft="-48dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="30dp"
             android:background="@android:color/white"
             android:clickable="true"
             android:text="Exit"
             android:textColor="#5DBCD2"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            />
     </LinearLayout>
 
 
