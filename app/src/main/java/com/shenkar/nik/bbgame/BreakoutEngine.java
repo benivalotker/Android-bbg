@@ -243,7 +243,6 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
             ball.setRandomX();
             ball.reverseY();
             ball.clearY(bat.getRect().top - 2);
-            //soundPool.play(deep1ID, 1, 1, 0,0,1);
         }
 
 
@@ -254,7 +253,6 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
 
             //lose a life
             lives--;
-            //soundPool.play(deep1ID, 1, 1, 0,0,1);
 
             if(lives == 0){
                 paused = true;
@@ -345,7 +343,7 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
             pause();
             Intent intent = new Intent(mContext, FinalLevel1.class);
             mContext.startActivity(intent);
-            //((Activity)mContext).finish();
+            ((Activity)mContext).finish();
         }
 
         score = 0;
@@ -431,6 +429,9 @@ public class BreakoutEngine extends SurfaceView implements Runnable {
         return level;
     }
 
+    void finish(){
+        ((Activity)mContext).finish();
+    }
 
 
     //screen touch

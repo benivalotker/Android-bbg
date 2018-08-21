@@ -31,6 +31,10 @@ public class Dialog extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Dialog.this, MainActivity.class);
                 startActivity(intent);
+                bbgActivity.breakoutEngine.finish();
+                bbgActivityLevel2.lavel2.finish();
+                finish();
+
             }
         });
     }

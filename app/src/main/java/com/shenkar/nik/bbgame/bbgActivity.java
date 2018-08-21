@@ -21,7 +21,7 @@ public class bbgActivity extends Activity {
 
 
         mMediaPlayer = new MediaPlayer();
-        mMediaPlayer = MediaPlayer.create(this,R.raw.song);
+        mMediaPlayer = MediaPlayer.create(this,R.raw.song1);
         mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         mMediaPlayer.setLooping(true);
         mMediaPlayer.start();

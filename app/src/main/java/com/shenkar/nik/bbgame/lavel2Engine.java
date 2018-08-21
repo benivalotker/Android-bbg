@@ -1,6 +1,7 @@
 package com.shenkar.nik.bbgame;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
@@ -15,7 +16,6 @@ import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.media.SoundPool;
-import android.os.SystemClock;
 import android.text.TextPaint;
 import android.util.Log;
 import android.view.Display;
@@ -297,7 +297,7 @@ public class lavel2Engine extends SurfaceView implements Runnable {
         for(int col = 0; col < size;col++){
             int mod = numBrick % 2;
             if (mod == 0){
-                brick[numBrick] = new Brick(1, col, brickWidth, brickHeight);
+                brick[numBrick] = new Brick(0, col, brickWidth, brickHeight);
                 numBrick++;
                 continue;
             }
@@ -331,7 +331,7 @@ public class lavel2Engine extends SurfaceView implements Runnable {
         for(int col = 0; col < size;col++){
             int mod = numBrick % 2;
             if (mod == 0){
-                brick[numBrick] = new Brick(1, col, brickWidth, brickHeight);
+                brick[numBrick] = new Brick(0, col, brickWidth, brickHeight);
                 numBrick++;
                 continue;
             }
@@ -346,7 +346,7 @@ public class lavel2Engine extends SurfaceView implements Runnable {
             pause();
             Intent intent = new Intent(mContext, GameOver.class);
             mContext.startActivity(intent);
-            //((Activity)mContext).finish();
+            ((Activity)mContext).finish();
         }
 
         score = 0;
@@ -432,7 +432,9 @@ public class lavel2Engine extends SurfaceView implements Runnable {
         return level;
     }
 
-
+    void finish(){
+        ((Activity)mContext).finish();
+    }
 
     //screen touch
     @SuppressLint("ClickableViewAccessibility")

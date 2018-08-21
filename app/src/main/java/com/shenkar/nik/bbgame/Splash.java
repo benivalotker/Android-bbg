@@ -1,13 +1,16 @@
 package com.shenkar.nik.bbgame;
 
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.WindowManager;
 
 public class Splash extends AppCompatActivity {
 
-    //VideoView videoView;
+    MediaPlayer mMediaPlayer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,11 +19,16 @@ public class Splash extends AppCompatActivity {
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        mMediaPlayer = new MediaPlayer();
+        mMediaPlayer = MediaPlayer.create(this,R.raw.open);
+        mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        mMediaPlayer.setLooping(true);
+        mMediaPlayer.start();
 
         Thread timer = new Thread() {
             public void run(){
                 try{
-                    sleep(7000);
+                    sleep(10000);
                 }catch (InterruptedException e){
                     e.printStackTrace();
                 }finally {
@@ -37,6 +45,7 @@ public class Splash extends AppCompatActivity {
     @Override
     protected void onPause(){
         super.onPause();
+        mMediaPlayer.stop();
         finish();
     }
 
